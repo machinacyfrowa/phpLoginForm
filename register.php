@@ -23,9 +23,14 @@
     <!-- pokaż tą część jeśli wysłaliśmy formularz -->
     <?php    
         $db = new mysqli('localhost', 'root', '', 'phploginform');
+        //przepisz zmienne z formularza do lokalnych zmiennych
         $email = $_POST['emailInput'];
         $password = $_POST['passwordInput'];
+        //zaszyfruj hasło używając md5
+        $password = md5($password);
+        //przygotuj kwerendę
         $sql = "INSERT INTO user (email, password) VALUES ('$email','$password')";
+        //wyślij kwerendę do bazy
         $result = $db->query($sql);
     ?>
     <h1>Rejestracja zakończona pomyślnie</h1>

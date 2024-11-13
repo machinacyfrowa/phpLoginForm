@@ -32,8 +32,8 @@
             //do zmiennej $row wyciągamy jeden wiersz z wyniku zapytania
             $row = $result->fetch_assoc();
             //sprawdz czy wyciągnięty przez nas wiersz ma identyczne hasło
-            //jak podane w formularzu
-            if($row['password'] == $password) {
+            //jak podane w formularzu zaszyfrowane md5
+            if($row['password'] == md5($password)) {
                 //wyświetl ładny komunikat
                 echo '<h1>Zalogowano pomyślnie</h1>';
             } else {
