@@ -26,8 +26,8 @@
         //przepisz zmienne z formularza do lokalnych zmiennych
         $email = $_POST['emailInput'];
         $password = $_POST['passwordInput'];
-        //zaszyfruj hasło używając md5
-        $password = md5($password);
+        //zaszyfruj hasło używając argon2i
+        $password = password_hash($password, PASSWORD_ARGON2I);
         //przygotuj kwerendę
         $sql = "INSERT INTO user (email, password) VALUES ('$email','$password')";
         //wyślij kwerendę do bazy

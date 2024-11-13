@@ -25,15 +25,14 @@
         $db = new mysqli('localhost', 'root', '', 'phploginform');
         $email = $_POST['emailInput'];
         $password = $_POST['passwordInput'];
-        $sql = "SELECT * FROM user WHERE email='$email'";
+        $sql = "SELECT * FROM user WHERE email='$email' LIMIT 1";
         $result = $db->query($sql);
         //spodziewamy się JEDNEGO użytkownika
         if($result->num_rows == 1) {
             //do zmiennej $row wyciągamy jeden wiersz z wyniku zapytania
             $row = $result->fetch_assoc();
-            //sprawdz czy wyciągnięty przez nas wiersz ma identyczne hasło
-            //jak podane w formularzu zaszyfrowane md5
-            if($row['password'] == md5($password)) {
+            //sprawdz czy hasło podane w formularzu pasuje do hasha z bazy
+            if(password_verify($password, $row['password'])) {
                 //wyświetl ładny komunikat
                 echo '<h1>Zalogowano pomyślnie</h1>';
             } else {
@@ -44,6 +43,7 @@
             echo '<h1>Błędny email lub hasło</h1>';
         }
     ?>
+    <a href="index.php">Powrót do głównej strony</a>
     <?php endif; ?>
 </body>
 </html>
