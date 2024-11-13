@@ -7,5 +7,6 @@
 </head>
 <body>
     <a href="register.php">Zarejestruj konto</a>
+    <a href="login.php">Zaloguj się</a>
 </body>
 </html>
