@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <?php if(isset($_SESSION['email'])): ?>
+    <?php if(isset($_SESSION['user'])): ?>
         <?php session_destroy(); ?>
         <h1>Wylogowano pomyślnie</h1>
     <?php endif; ?>

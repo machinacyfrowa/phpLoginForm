@@ -1,3 +1,6 @@
+<?php
+require_once('class/User.php');
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -29,16 +32,10 @@
     <?php else: ?>
         <!-- pokaż tą część jeśli wysłaliśmy formularz -->
         <?php
-        $db = new mysqli('localhost', 'root', '', 'phploginform');
         //przepisz zmienne z formularza do lokalnych zmiennych
         $email = $_POST['emailInput'];
         $password = $_POST['passwordInput'];
-        //zaszyfruj hasło używając argon2i
-        $password = password_hash($password, PASSWORD_ARGON2I);
-        //przygotuj kwerendę
-        $sql = "INSERT INTO user (email, password) VALUES ('$email','$password')";
-        //wyślij kwerendę do bazy
-        $result = $db->query($sql);
+        User::register($email, $password);
         ?>
         <h1>Rejestracja zakończona pomyślnie</h1>
         <a href="index.php">Powrót do głównej strony</a>

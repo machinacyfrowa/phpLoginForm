@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+require_once('class/User.php');
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -21,8 +24,8 @@
             <a href="login.php">
                 <button type="button" class="btn btn-primary btn-lg w-100 mb-5">Zaloguj</button>
             </a>
-            <?php if(isset($_SESSION['email'])): ?>
-                <p>Jesteś zalogowany jako: <?php echo $_SESSION['email']; ?></p>
+            <?php if(isset($_SESSION['user'])): ?>
+                <p>Jesteś zalogowany jako: <?php echo $_SESSION['user']->getEmail(); ?></p>
                 <a href="logout.php">
                     <button type="button" class="btn btn-primary btn-lg w-100 mb-5">Wyloguj</button>
                 </a>
