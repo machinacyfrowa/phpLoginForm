@@ -1,3 +1,5 @@
+<!-- odtwórz poprzednią sesję lub utwórz nową -->
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -43,6 +45,8 @@
             $row = $result->fetch_assoc();
             //sprawdz czy hasło podane w formularzu pasuje do hasha z bazy
             if (password_verify($password, $row['password'])) {
+                //zapisz w sesji email zalogowanego użytkownika
+                $_SESSION['email'] = $email;
                 //wyświetl ładny komunikat
                 echo '<h1>Zalogowano pomyślnie</h1>';
             } else {

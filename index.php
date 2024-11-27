@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -20,6 +21,12 @@
             <a href="login.php">
                 <button type="button" class="btn btn-primary btn-lg w-100 mb-5">Zaloguj</button>
             </a>
+            <?php if(isset($_SESSION['email'])): ?>
+                <p>Jesteś zalogowany jako: <?php echo $_SESSION['email']; ?></p>
+                <a href="logout.php">
+                    <button type="button" class="btn btn-primary btn-lg w-100 mb-5">Wyloguj</button>
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 
