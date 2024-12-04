@@ -1,6 +1,3 @@
-<?php
-require_once('class/User.php');
-?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -17,7 +14,7 @@ require_once('class/User.php');
         <div class="container">
             <div class="col-8 col-lg-4 offset-2 offset-lg-4 text-center pt-3">
                 <h1 class="mb-3">Zarejestruj nowe konto</h1>
-                <form action="register.php" method="post">
+                <form action="register" method="post">
                     <!-- pole na email oraz labelka do niego -->
                     <label for="emailInput" class="form-label mb-1">Login:</label>
                     <input type="email" name="emailInput" id="emailInput" class="form-control mb-3">
@@ -38,7 +35,7 @@ require_once('class/User.php');
         User::register($email, $password);
         ?>
         <h1>Rejestracja zakończona pomyślnie</h1>
-        <a href="index.php">Powrót do głównej strony</a>
+        <a href="/phploginform">Powrót do głównej strony</a>
     <?php endif; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

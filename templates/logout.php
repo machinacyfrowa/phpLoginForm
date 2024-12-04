@@ -1,5 +1,3 @@
-<!-- odtwórz poprzednią sesję lub utwórz nową -->
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -18,6 +16,6 @@
         <?php session_destroy(); ?>
         <h1>Wylogowano pomyślnie</h1>
     <?php endif; ?>
-    <a href="index.php">Powrót do głównej strony</a>
+    <a href="/phploginform">Powrót do głównej strony</a>
 </body>
 </html>

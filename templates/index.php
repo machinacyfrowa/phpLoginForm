@@ -1,7 +1,3 @@
-<?php 
-require_once('class/User.php');
-session_start(); 
-?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -17,16 +13,16 @@ session_start();
     <div class="container">
         <div class="col-8 col-lg-4 offset-2 offset-lg-4 text-center pt-3">
             <h1 class="mb-5">Menu główne</h1>
-            <a href="register.php">
+            <a href="register">
                 <button type="button" class="btn btn-primary btn-lg w-100 mb-5">Zarejestruj</button>
             </a>
             <br>
-            <a href="login.php">
+            <a href="login">
                 <button type="button" class="btn btn-primary btn-lg w-100 mb-5">Zaloguj</button>
             </a>
             <?php if(isset($_SESSION['user'])): ?>
                 <p>Jesteś zalogowany jako: <?php echo $_SESSION['user']->getEmail(); ?></p>
-                <a href="logout.php">
+                <a href="logout">
                     <button type="button" class="btn btn-primary btn-lg w-100 mb-5">Wyloguj</button>
                 </a>
             <?php endif; ?>
