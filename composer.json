@@ -1,0 +1,17 @@
+{
+    "name": "machinacyfrowa/php-login-form",
+    "description": "Prosty formularz rejestracji i logowania w oparciu o PHP i mySQL",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Machinacyfrowa\\PhpLoginForm\\": "class/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Paweł Zawadzki",
+            "email": "pawel.zawadzki2@teb.edu.pl"
+        }
+    ],
+    "require": {}
+}
