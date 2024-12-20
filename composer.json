@@ -13,5 +13,7 @@
             "email": "pawel.zawadzki2@teb.edu.pl"
         }
     ],
-    "require": {}
+    "require": {
+        "steampixel/simple-php-router": "^0.7.1"
+    }
 }
