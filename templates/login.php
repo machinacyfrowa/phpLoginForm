@@ -20,10 +20,10 @@
                 <form action="login" method="post">
                    <!-- pole na email oraz labelka do niego -->
                    <label for="emailInput" class="form-label mb-1">Login:</label>
-                    <input type="email" name="emailInput" id="emailInput" class="form-control mb-3">
+                    <input type="email" name="emailInput" id="emailInput" class="form-control mb-3" required>
                     <!-- pole na hasło oraz labelka do niego -->
                     <label for="passwordInput" class="form-label mb-1">Hasło:</label>
-                    <input type="password" name="passwordInput" id="passwordInput" class="form-control mb-3">
+                    <input type="password" name="passwordInput" id="passwordInput" class="form-control mb-3" required>
                     <!-- guzik wyślij -->
                     <input type="submit" name="submit" value="Zaloguj" class="btn btn-primary w-100">
                 </form>
