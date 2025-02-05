@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 require_once('class/User.php');
-require_once('class/Upload.php');
+require_once('class/Image.php');
 
 session_start(); 
 use Steampixel\Route;
@@ -61,7 +61,7 @@ Route::add('/upload', function() {
 });
 //przetwarzanie otrzymanego obrazu
 Route::add('/upload', function() {
-    new Upload($_FILES['file']);
+    Image::Upload($_FILES['file']);
 }, 'post');
 Route::run('/phploginform');
 ?>
