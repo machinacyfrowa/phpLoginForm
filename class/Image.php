@@ -4,16 +4,18 @@ class Image {
     public static function Upload(array $files) {
         //pobierz oryginalną nazwe pliku
         $name = $files['name'];
-        //wyciągnij z oryginalnej nazwy pliku rozszerzenie
-        $extension = pathinfo($name, PATHINFO_EXTENSION);
         //wygeneruj unikatowy string na podstawie nazwy pliku i aktualnego czasu
-        $name = sha1($name.microtime()).".".$extension;
+        $name = sha1($name.microtime()).".webp";
         //pobierz ścieżkę pliku tymczasowego
         $tempPath = $files['tmp_name'];
+        //wczytaj obraz do stringa
+        $imageString = file_get_contents($tempPath);
+        //zdekoduj stringa do obrazu
+        $image = imagecreatefromstring($imageString);
         //wygeneruj nową ścieżkę pliku
         $path = "uploads/".$name; 
-        //przenieś plik z folderu tymczasowego do folderu z uploadami
-        move_uploaded_file($tempPath, $path);
+        //zapisać obraz w formacie webp
+        imagewebp($image, $path);
     }
 }
 
