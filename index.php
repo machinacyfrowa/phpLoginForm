@@ -53,6 +53,15 @@ Route::add('/logout', function() {
     //wyświetlamy szablon
     $s->display('logout.tpl');
 });
-
+//formularz do wgrywania obrazka
+Route::add('/upload', function() {
+    global $s;
+    $s->display('upload.tpl');
+});
+//przetwarzanie otrzymanego obrazu
+Route::add('/upload', function() {
+    echo "<pre>";
+    var_dump($_FILES);
+}, 'post');
 Route::run('/phploginform');
 ?>
