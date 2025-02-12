@@ -43,10 +43,16 @@ Route::add('/login', function() {
     $s->display('postlogin.tpl');
 }, 'post');
 Route::add('/register', function() {
-    include('templates/register.php');
+    global $s;
+    $s->display('register.tpl');
 });
 Route::add('/register', function() {
-    include('templates/register.php');
+    global $s;
+    $email = $_POST['emailInput'];
+    $password = $_POST['passwordInput'];
+    User::register($email, $password);
+    $s->assign('message', 'Zostałeś zarejestrowany poprawnie');
+    $s->display('postregister.tpl');
 }, 'post');
 Route::add('/logout', function() {
     //include('templates/logout.php');
