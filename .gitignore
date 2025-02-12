@@ -1,1 +1,4 @@
 /vendor/
+/uploads/*
+/templates_c/*
+/cache/*
