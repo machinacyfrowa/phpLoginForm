@@ -94,4 +94,10 @@ class User
             throw new Exception("Błąd zapisu do bazy danych");
         }
     }
+    public static function checkAuth() {
+        if(!isset($_SESSION['user'])) {
+            header('Location: login');
+            exit();
+        }
+    }
 }
