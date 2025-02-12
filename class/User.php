@@ -77,4 +77,21 @@ class User
             throw new Exception("Błąd zapisu do bazy danych");
         }
     }
+    public function updatePassword(string $newPassword) : bool {
+        //zaszyfruj nowe hasło
+        $passwordHash = password_hash($newPassword, PASSWORD_ARGON2I);
+        //otwieramy połączenie do bazy danych
+        $db = new mysqli("localhost", "root", "", "phploginform");
+        //przygotuj kwerendę
+        $sql = "UPDATE user SET password='$passwordHash' WHERE id='$this->id'";
+        //wyślij kwerendę do bazy
+        $result = $db->query($sql);
+        if($result) {
+            //zapisano poprawnie zmiany
+            return true;
+        } else {
+            //błąd zapisu
+            throw new Exception("Błąd zapisu do bazy danych");
+        }
+    }
 }

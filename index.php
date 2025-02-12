@@ -106,6 +106,14 @@ Route::add("/profile", function(){
         $user->updateProfile($_POST['firstName'], $_POST['lastName']);
         $s->assign('message', 'Zaktualizowano profil');
     }
+    if(isset($_POST['password']) && isset($_POST['passwordRepeat'])){
+        if($_POST['password'] == $_POST['passwordRepeat']){
+            $user->updatePassword($_POST['password']);
+            $s->assign('message', 'Zaktualizowano hasło');
+        } else {
+            $s->assign('message', 'Hasła nie są takie same');
+        }
+    }
     $s->display('postprofile.tpl');
 }, 'post');
 Route::run('/phploginform');
