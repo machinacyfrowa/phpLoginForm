@@ -77,5 +77,36 @@ Route::add('/upload', function() {
 Route::add('/upload', function() {
     Image::Upload($_FILES['file']);
 }, 'post');
+Route::add("/profile", function(){
+    global $s;
+    //sprawdzamy czy ktoś jest zalogowany
+    $isUserLogged = isset($_SESSION['user']);
+    //jeśli nie to przekieruj na stronę logowania
+    if(!$isUserLogged){
+        header('Location: login');
+        exit();
+    }
+    //dalszy kod wykona sie tylko jeśli jestesmy zalogowani
+    $user = $_SESSION['user'];
+    $s->assign('firstName', $user->getFirstName());
+    $s->assign('lastName', $user->getLastName());
+    $s->display('profile.tpl');
+});
+Route::add("/profile", function(){
+    global $s;
+    $isUserLogged = isset($_SESSION['user']);
+    if(!$isUserLogged){
+        header('Location: login');
+        exit();
+    }
+    //dalszy kod wykona sie tylko jeśli jestesmy zalogowani
+    $user = $_SESSION['user'];
+    //TODO: zapisz faktycznie zmiany w profilu
+    if(isset($_POST['firstName']) && isset($_POST['lastName'])){
+        $user->updateProfile($_POST['firstName'], $_POST['lastName']);
+        $s->assign('message', 'Zaktualizowano profil');
+    }
+    $s->display('postprofile.tpl');
+}, 'post');
 Route::run('/phploginform');
 ?>

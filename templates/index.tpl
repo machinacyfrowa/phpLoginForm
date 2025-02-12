@@ -14,6 +14,9 @@
             {if $isUserLogged}
                 <!-- jeśli tak, wyświetlamy jego email -->
                 <p>Jesteś zalogowany jako: {$user}</p>
+                <a href="profile">
+                    <button type="button" class="btn btn-primary btn-lg w-100 mb-5">Profil</button>
+                </a>
                 <a href="logout">
                     <button type="button" class="btn btn-primary btn-lg w-100 mb-5">Wyloguj</button>
                 </a>

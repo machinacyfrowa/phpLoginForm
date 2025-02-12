@@ -53,4 +53,28 @@ class User
         //wyślij kwerendę do bazy
         $result = $db->query($sql);
     }
+    public function getFirstName() : string {
+        return $this->firstName;
+    }
+    public function getLastName() : string {
+        return $this->lastName;
+    }
+    public function updateProfile(string $firstName, string $lastName) : bool {
+        //zapisz nowe dane do obiektu
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        //otwieramy połączenie do bazy danych
+        $db = new mysqli("localhost", "root", "", "phploginform");
+        //przygotuj kwerendę
+        $sql = "UPDATE user SET firstname='$firstName', lastname='$lastName' WHERE id='$this->id'";
+        //wyślij kwerendę do bazy
+        $result = $db->query($sql);
+        if($result) {
+            //zapisano poprawnie zmiany
+            return true;
+        } else {
+            //błąd zapisu
+            throw new Exception("Błąd zapisu do bazy danych");
+        }
+    }
 }
