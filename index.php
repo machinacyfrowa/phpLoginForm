@@ -29,10 +29,18 @@ Route::add('/', function() {
     $s->display('index.tpl');
 });
 Route::add('/login', function() {
-    include('templates/login.php');
+    global $s;
+    $s->display('login.tpl');
 });
 Route::add('/login', function() {
-    include('templates/login.php');
+    global $s;
+    $email = $_POST['emailInput'];
+    $password = $_POST['passwordInput'];
+    $user = new User($email, $password);
+    $user->registerSession();
+    //wyświetl templatke po logowaniu
+    $s->assign('message', 'Zostałeś zalogowany poprawnie');
+    $s->display('postlogin.tpl');
 }, 'post');
 Route::add('/register', function() {
     include('templates/register.php');

@@ -1,6 +1,5 @@
 <?php
 class Image {
-
     public static function Upload(array $files) {
         //pobierz oryginalną nazwe pliku
         $name = $files['name'];
